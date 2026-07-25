@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ DEFAULT_LANG }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block description %}{{ SITESUBTITLE }}{% endblock %}">
+    <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css">
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="shapes" aria-hidden="true">
+        <span class="shape shape-a"></span>
+        <span class="shape shape-b"></span>
+        <span class="shape shape-c"></span>
+        <span class="shape shape-d"></span>
+      </div>
+      <div class="wrap masthead-inner">
+        <a class="site-name" href="{{ SITEURL }}/">{{ SITENAME }}</a>
+        <nav aria-label="Main navigation">
+          <a href="{{ SITEURL }}/">Home</a>
+          <a href="{{ SITEURL }}/articles/">Writing</a>
+          <a href="https://github.com/Lorenzo287">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

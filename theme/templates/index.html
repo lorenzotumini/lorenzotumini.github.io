@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class="visually-hidden">{{ SITENAME }}</h1>
+
+  {% for page in pages %}
+    {% if page.slug == "home" %}
+      <section class="intro">
+        {{ page.content }}
+      </section>
+    {% endif %}
+  {% endfor %}
+
+  <section>
+    <h2>Projects</h2>
+    <div class="projects">
+      {% for project in PROJECTS %}
+        <article class="project">
+          <h3>
+            <a href="{{ project.url }}">{{ project.name }}</a>
+            <span>{{ project.tech }}</span>
+          </h3>
+          <p>{{ project.description }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% if articles %}
+    <section>
+      <h2>Writing</h2>
+      <ol class="article-list">
+        {% for article in articles %}
+          <li>
+            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+            <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+  {% endif %}
+{% endblock %}

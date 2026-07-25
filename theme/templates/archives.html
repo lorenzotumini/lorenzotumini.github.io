@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Writing — {{ SITENAME }}{% endblock %}
+{% block description %}Technical writing by Lorenzo Tumini.{% endblock %}
+
+{% block content %}
+  <header class="page-heading">
+    <h1>Writing</h1>
+  </header>
+
+  <ol class="article-list article-list-all">
+    {% for article in articles %}
+      <li>
+        <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+        <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
+      </li>
+    {% endfor %}
+  </ol>
+{% endblock %}
