@@ -12,7 +12,7 @@
         }
       } catch (_) {}
     </script>
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css">
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css{% if ASSET_VERSION %}?v={{ ASSET_VERSION }}{% endif %}">
   </head>
   <body>
     <header class="masthead">
@@ -42,7 +42,7 @@
       <div class="page-scrollbar-thumb"></div>
     </div>
 
-    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/theme.js" defer></script>
-    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/scrollbar.js" defer></script>
+    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/theme.js{% if ASSET_VERSION %}?v={{ ASSET_VERSION }}{% endif %}" defer></script>
+    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/scrollbar.js{% if ASSET_VERSION %}?v={{ ASSET_VERSION }}{% endif %}" defer></script>
   </body>
 </html>
