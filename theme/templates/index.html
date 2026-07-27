@@ -28,12 +28,11 @@
 
   {% if articles %}
     <section>
-      <h2>Writing</h2>
+      <h2>Latest</h2>
       <ol class="article-list">
         {% for article in articles %}
           <li>
             <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-            <time datetime="{{ article.date.isoformat() }}">{{ article.locale_date }}</time>
           </li>
         {% endfor %}
       </ol>

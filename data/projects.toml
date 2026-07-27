@@ -2,7 +2,7 @@
 name = "Toy"
 url = "https://github.com/Lorenzo287/toy"
 tech = "C · Go"
-description = "A quotation-first concatenative language with a stack-based runtime, reference-counted objects, an iterative VM, packages, C interop, and editor tooling."
+description = "A functional concatenative language with a stack-based runtime, reference-counted objects, an iterative VM, packages, C interop, and editor tooling."
 
 [[projects]]
 name = "Programma 101"
@@ -14,7 +14,7 @@ description = "An emulator for Olivetti's Programma 101, including its register 
 name = "Graphe"
 url = "https://github.com/Lorenzo287/graphe"
 tech = "C · raylib"
-description = "An interactive visualizer for DFS, BFS, and tree traversals with step-by-step playback, edge classification, graph layouts, and custom input files."
+description = "An interactive visualizer for DFS, BFS, and tree traversals with step-by-step playback, edge classification and graph layouts."
 
 [[projects]]
 name = "liblor"
@@ -26,10 +26,4 @@ description = "A portable utility library with arenas, strings, dynamic arrays, 
 name = "WAV Convolution Engine"
 url = "https://github.com/Lorenzo287/convolution"
 tech = "C · DSP"
-description = "An audio convolution tool developed from a naive implementation through OpenMP, AVX2/FMA, and overlap-save FFT versions, with profiling and benchmarks."
-
-[[projects]]
-name = "Obsidian Statistics"
-url = "https://github.com/Lorenzo287/obsidian_stats"
-tech = "Python"
-description = "A data pipeline that turns daily notes into productivity scores, calendar heatmaps, correlations, trend analysis, and anomaly detection."
+description = "An audio convolution tool developed from a naive implementation through OpenMP, AVX2/FMA, and overlap-save FFT versions."
