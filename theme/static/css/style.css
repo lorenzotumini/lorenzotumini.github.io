@@ -30,12 +30,16 @@
   /* --masthead-link: #d8e7ff; */
   --prose-heading: #cfe0fa;
   --inline-code-background: #26303c;
+  --code-block-background: #202a36;
+  --code-block-shadow: rgb(2 5 8 / 70%);
   --quote: #d6e4f8;
   --diagram-text: #d8e7ff;
   --syntax-comment: #7f8c9d;
   --syntax-keyword: #7fb5ff;
   --syntax-number: #f5a340;
   --syntax-string: #a7d49b;
+  --scrollbar: #53677a;
+  --scrollbar-hover: #7890a6;
   color-scheme: dark;
 }
 
@@ -54,12 +58,16 @@ html[data-theme="light"] {
   --masthead-link: #173f66;
   --prose-heading: #214f7a;
   --inline-code-background: #e1e4e5;
+  --code-block-background: #e8e3d9;
+  --code-block-shadow: rgb(64 52 39 / 22%);
   --quote: #324f6d;
   --diagram-text: #f4f0e6;
   --syntax-comment: #66717c;
   --syntax-keyword: #1f5e9c;
   --syntax-number: #9b4d00;
   --syntax-string: #426d36;
+  --scrollbar: #a3a9aa;
+  --scrollbar-hover: #747e82;
   color-scheme: light;
 }
 
@@ -71,6 +79,42 @@ html[data-theme="light"] {
 
 html {
   background: var(--background);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+.page-scrollbar {
+  position: fixed;
+  z-index: 10;
+  top: 4px;
+  right: 2px;
+  bottom: 4px;
+  width: 6px;
+  pointer-events: none;
+}
+
+.page-scrollbar-thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 64px;
+  background: var(--scrollbar);
+  cursor: grab;
+  pointer-events: auto;
+  touch-action: none;
+}
+
+.page-scrollbar-thumb:hover {
+  background: var(--scrollbar-hover);
+}
+
+.page-scrollbar-thumb:active {
+  cursor: grabbing;
 }
 
 body {
@@ -139,11 +183,11 @@ a:focus-visible {
   content: "";
   pointer-events: none;
   background-image: url("../images/banner-annealed.svg");
-  background-position: center 42%;
+  background-position: center 1%;
   background-repeat: no-repeat;
   background-size: cover;
-  filter: brightness(0.78) saturate(0.94);
-  transform: scale(1.01);
+  filter: brightness(0.8) saturate(0.9);
+  transform: scale(1.05);
 }
 
 .masthead-inner {
@@ -330,7 +374,11 @@ h3 {
   margin-block: 1.5rem;
   padding: 1.15rem 1.25rem;
   color: var(--code);
-  background: var(--surface);
+  background: var(--code-block-background);
+  border-radius: 6px;
+  box-shadow:
+    0 10px 15px -6px var(--code-block-shadow),
+    0 4px 6px -4px var(--code-block-shadow);
 }
 
 .highlight pre {
@@ -507,6 +555,7 @@ figcaption {
 
   .masthead nav,
   .article-navigation,
+  .page-scrollbar,
   .theme-toggle {
     display: none;
   }
