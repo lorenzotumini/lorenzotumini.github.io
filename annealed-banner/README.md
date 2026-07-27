@@ -42,6 +42,18 @@ approximation, so the accepted count can be lower than `SHAPE_COUNT`.
 To use a result on the site, copy `banner.svg` over
 `theme/static/images/banner-annealed.svg`.
 
+## Extract its colors
+
+`extract-palette.py` applies the masthead's brightness and saturation filters,
+then prints representative lapis, clay, ochre, and stone colors:
+
+```powershell
+.\.venv\Scripts\python.exe annealed-banner\extract-palette.py
+```
+
+These are source swatches rather than ready-made UI colors. Text and link
+colors should still be adjusted and checked for readable contrast.
+
 ## Source used for the first trial
 
 Ambrogio Lorenzetti, *Effects of Good Government in the city* (1338–1339).

@@ -9,5 +9,5 @@ Away from the terminal I play drums and have worked in audio engineering, inside
 i use Neovim.
 
 [Email](mailto:lorenzo.tumini@outlook.com) ·
-[GitHub](https://github.com/Lorenzo287) ·
+[GitHub](https://github.com/lorenzotumini) ·
 [LinkedIn](https://www.linkedin.com/in/lorenzo-tumini)

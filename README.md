@@ -32,3 +32,13 @@ The generated files are written to `output/`. Do not edit them directly.
 
 Reusable HTML lives in `theme/templates/`; the complete visual design is in
 `theme/static/css/style.css`.
+
+## Publish with GitHub Pages
+
+The workflow in `.github/workflows/pages.yml` builds and publishes the site
+whenever `main` is pushed. On GitHub, open **Settings → Pages** and select
+**GitHub Actions** as the publishing source.
+
+The production build uses `publishconf.py`. GitHub supplies the correct public
+URL automatically, including the repository subpath when this is a project
+site, so no username or repository name is hard-coded.
