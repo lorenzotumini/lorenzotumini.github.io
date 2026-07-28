@@ -364,6 +364,12 @@ h3 {
   font-size: 1.55rem;
 }
 
+.prose h3 {
+  margin: 1.5rem 0 0.45rem;
+  color: var(--prose-heading);
+  font-size: 1.2rem;
+}
+
 .prose code {
   font-family: ui-monospace, "Cascadia Mono", "Liberation Mono", monospace;
   font-size: 0.88em;
@@ -426,6 +432,70 @@ h3 {
 .verse {
   margin-block: 0.85rem 1rem;
   white-space: pre-wrap;
+}
+
+.scansion {
+  overflow-x: auto;
+  margin: 1.05rem 0;
+  padding: 0.85rem 1rem 0.7rem;
+  color: var(--code);
+  background: var(--code-block-background);
+  border-radius: 6px;
+  box-shadow:
+    0 10px 15px -6px var(--code-block-shadow),
+    0 4px 6px -4px var(--code-block-shadow);
+}
+
+.scansion-line {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  min-width: 100%;
+  font-family: ui-monospace, "Cascadia Mono", "Liberation Mono", monospace;
+}
+
+.scansion-syllable {
+  display: grid;
+  min-width: 2.25rem;
+  justify-items: center;
+  line-height: 1.25;
+}
+
+.scansion-syllable > span {
+  font-size: 0.9rem;
+}
+
+.scansion-syllable b {
+  color: var(--code);
+  font-weight: 400;
+}
+
+.scansion-syllable.is-long > span {
+  color: var(--syntax-number);
+}
+
+.scansion-syllable.is-short > span {
+  color: var(--syntax-keyword);
+}
+
+.scansion-syllable.is-anceps > span {
+  color: var(--muted);
+}
+
+.scansion-caesura {
+  margin-inline: 0.2rem;
+  color: var(--quote);
+  font-family: ui-monospace, "Cascadia Mono", "Liberation Mono", monospace;
+}
+
+.scansion-footbreak {
+  margin-inline: 0.12rem;
+  color: var(--muted);
+  font-family: ui-monospace, "Cascadia Mono", "Liberation Mono", monospace;
+}
+
+.scansion figcaption {
+  margin-top: 0.55rem;
 }
 
 .formatting-note {
@@ -575,6 +645,14 @@ figcaption {
 
   .highlight pre {
     line-height: 1.45;
+  }
+
+  .scansion {
+    padding-inline: 0.75rem;
+  }
+
+  .scansion-syllable {
+    min-width: 2rem;
   }
 
   .project h3 {

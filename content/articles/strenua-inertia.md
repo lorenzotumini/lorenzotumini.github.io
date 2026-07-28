@@ -46,6 +46,47 @@ est Ulubris, animus si te non deficit aequus.
 >
 > — Horace, *Epistles* 1.11
 
+### Metre
+
+The epistle is written in **dactylic hexameter**. Each line has six feet:
+in the first four a dactyl (`– ⏑ ⏑`) may be replaced by a spondee (`– –`);
+the fifth is normally a dactyl, and the last ends `– ×`.
+
+```text
+– ⏕  |  – ⏕  |  – ⏕  |  – ⏕  |  – ⏑ ⏑ | – ×
+
+⏕ equals ⏑ ⏑ or –
+```
+
+The opening line has two dactyls, two spondees, a final dactyl, and the
+closing foot. Its main caesura falls inside the third foot:
+
+<figure class="scansion">
+<div class="scansion-line" aria-label="Long Quid, short ti, short bi; long vi, short sa, short Chi; long os, caesura, long Bul; long la, long ti; long no, short ta, short que; long Les, anceps bos">
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>Quid</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>ti</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>bi</b></span>
+  <span class="scansion-footbreak" aria-hidden="true">|</span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>vī</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>sa</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>Chi</b></span>
+  <span class="scansion-footbreak" aria-hidden="true">|</span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>os</b></span>
+  <span class="scansion-caesura" aria-hidden="true">‖</span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>Bul</b></span>
+  <span class="scansion-footbreak" aria-hidden="true">|</span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>lā</b></span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>tī</b></span>
+  <span class="scansion-footbreak" aria-hidden="true">|</span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>nō</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>ta</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>que</b></span>
+  <span class="scansion-footbreak" aria-hidden="true">|</span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>Les</b></span>
+  <span class="scansion-syllable is-anceps"><span aria-hidden="true">×</span><b>bos</b></span>
+</div>
+</figure>
+
 ## Otium
 
 <div class="verse" lang="la">
@@ -107,6 +148,36 @@ Parca non mendax dedit et malignum
 > from his homeland escapes himself as well?”
 >
 > — Horace, *Odes* 2.16
+
+### Metre
+
+The ode uses **Sapphic stanzas**: three Sapphic hendecasyllables followed by
+an Adonic. `–` marks a long syllable, `⏑` a short one, `×` an *anceps* (either
+long or short), and `‖` the caesura.
+
+```text
+Sapphic hendecasyllables
+– ⏑ – – – ‖ ⏑ ⏑ – ⏑ – ×
+Adonic
+– ⏑ ⏑ – ×
+```
+
+<figure class="scansion">
+<div class="scansion-line" aria-label="Long O, short ti, long um, long di, long vos, caesura, short ro, short gat, long in, short pa, long ten, anceps ti">
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>O</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>ti</b></span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>um</b></span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>dī</b></span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>vōs</b></span>
+  <span class="scansion-caesura" aria-hidden="true">‖</span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>ro</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>gat</b></span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>in</b></span>
+  <span class="scansion-syllable is-short"><span aria-hidden="true">⏑</span><b>pa</b></span>
+  <span class="scansion-syllable is-long"><span aria-hidden="true">–</span><b>ten</b></span>
+  <span class="scansion-syllable is-anceps"><span aria-hidden="true">×</span><b>tī</b></span>
+</div>
+</figure>
 
 <details class="formatting-note" markdown="1">
 <summary>Keeping the verse line breaks</summary>
