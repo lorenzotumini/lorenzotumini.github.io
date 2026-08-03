@@ -51,13 +51,13 @@ html[data-theme="light"] {
   --coral: #b86745;
   --text: #241b16;
   --muted: #5f544b;
-  --accent: #b56b12;
-  --link-hover: #773f08;
+  --accent: #935713;
+  --link-hover: #5c3916;
   --code: #30251e;
   --masthead-link: #3b2a1d;
-  --prose-heading: #9c5410;
-  --inline-code-background: #d8c8b6;
-  --code-block-background: #d8c8b6;
+  --prose-heading: #7d471e;
+  --inline-code-background: #e4dbcf;
+  --code-block-background: #e7ded2;
   --code-block-shadow: rgb(67 49 34 / 20%);
   --quote: #604c3b;
   --diagram-text: #f7f1e8;
