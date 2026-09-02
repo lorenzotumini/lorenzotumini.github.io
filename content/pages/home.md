@@ -6,7 +6,7 @@ Torino. I am passionate about little know languages, data structures and low-lev
 Lately I have been experimenting with AI agents, trying to integrate them 
 with personal knowledge systems.
 Away from the terminal I play drums and have worked in audio engineering, inside the terminal
-i use Neovim.
+I use Neovim.
 
 [Email](mailto:lorenzo.tumini@outlook.com) ·
 [GitHub](https://github.com/lorenzotumini) ·
