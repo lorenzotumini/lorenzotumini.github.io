@@ -1,35 +1,90 @@
-Title: Performance Tricks in C
+Title: What They Don't Teach You in College
 Date: 2026-08-12
-Slug: performance-tricks-in-c
+Slug: what-they-don't-teach-you-in-college
 Status: draft
 Category: Technical notes
-Summary: An outline for an article about less-obvious performance techniques in C and systems programming.
+Summary: An article about less-obvious performance techniques in C and systems programming.
 
-<!--
-This is a template, not a finished article. Replace the prompts with prose and
-small, standalone C examples. The selected research material lives in
-content/notes/performance-tricks-material.md.
--->
+Now that that I have clickbaited you into opening this article I have to
+convince you it might be a good idea to keep reading. Let's say you know some 
+programming languages, you understand complexity and data structures, and you have
+a decent understanding of how memory works (in short, the typical CS student).
+Then you believe that having a solid technical foundation wins over the alternative 
+- even now that you are one prompt away from glory - because what will distinguish you
+from all the other prompters is the quality of your ideas. Maybe you don't even care
+about that, and you love programming for its sake, for the joy that you find in problem
+solving. In any case, in this article you will find ideas, tips and tricks they don't
+teach you in college.
 
-## Opening: remove bookkeeping from the hot path
+Side note 1: the examples are in C but most of the ideas apply in general, and even if 
+they don't, they were too cool to exclude.
 
-> Draft prompt: establish the intended audience and thesis. The article is not
-> about basic Big-O advice; it is about representation, lifetime, ownership,
-> lookup, and execution-state choices that experienced systems programmers use
-> to make common cases cheap.
+Side note 2: this article is handcrafted by me, the dashes are handcrafted too. English is 
+not my native language, be kind.
 
-## 1. Pointer tagging and immediate values
+## Pointer tagging
 
-> Draft prompt: show a tagged `uintptr_t` value that stores small integers in
-> the word itself, then explain alignment, range limits, fallback objects,
-> equality, hashing, and portability.
+Once you realize that you need a single bit for each flag, you can 
+pack multiple of them in a field with some clever masking:
 
-Include:
+```c
+#define FLAG1 (1 << 0) // 0b00000001
+#define FLAG2 (1 << 1) // 0b00000010
+#define FLAG3 (1 << 2) // 0b00000100
 
-- a bit-layout diagram;
-- a checked encode/decode example;
-- a note on low-bit tags versus NaN-boxing;
-- why the representation must be invisible to callers.
+// sizeof(struct obj): 12
+struct obj {
+    char id[4];
+    int val;
+    int flags; // can fit up to 32 flags
+} o;
+
+o.flags = FLAG1 | FLAG2
+```
+
+But what if i told you that you can store flags without reserving space in the struct? 
+The trick exploits pointer alignment: on a 64-bit architecture data is always aligned
+to the size of a work, namely 8 bytes. this means that every address that points to a region 
+allocated on the heap will always be a multiple of 8, thus ending with the bits 000.
+This renders those ending bits useless for adressing purposes and usable to store additional
+data.
+ 
+```c
+#define FLAG1 (1 << 0) // 0b00000001
+#define FLAG2 (1 << 1) // 0b00000010
+#define FLAG3 (1 << 2) // 0b00000100
+#define MASK 0x0111
+
+// sizeof(struct obj): 8
+struct obj {
+    char id[4];
+    int val;
+};
+
+struct obj *o = malloc(sizeof(struct obj));
+o |= FLAG1 | FLAG2;
+
+// to get the address back you mask out the flags
+struct obj *ptr = o & ~MASK
+```
+
+You can even push this further and use the entire pointer to store data.
+Suppose your program needs an object that can assume different values (integer,
+float, string), but you want a general abstract interface. The classic solution
+is a tagged union that lets you reserve just enough space for the biggest field
+in the union.
+
+```c 
+// sizeof(struct obj): 8
+struct obj {
+    int type;
+    union {
+        int i;
+        float f;
+        char str[4];
+    };
+};
+```
 
 ## 2. Small-buffer optimization
 
