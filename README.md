@@ -14,6 +14,9 @@ python -m pip install -r requirements.txt
 Articles are Markdown files under `content/articles/`. Personal information is
 in `content/pages/home.md`, and the project list is in `data/projects.toml`.
 
+The music introduction is in `content/pages/music.md`, recordings are in
+`data/music.toml`, and audio files go in `content/audio/`.
+
 To rebuild automatically and preview at `http://localhost:8000`:
 
 ```powershell

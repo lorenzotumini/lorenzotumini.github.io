@@ -339,6 +339,70 @@ h3 {
   gap: 0.7rem;
 }
 
+.masthead nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+.music-heading p {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+}
+
+.music-preview-note {
+  margin: 0 0 1.1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.music-year {
+  padding-top: 1rem;
+  border-top: 1px solid var(--surface);
+}
+
+.music-year > h2 {
+  margin-bottom: 1.1rem;
+  color: var(--muted);
+  font-family: ui-monospace, "Cascadia Mono", "Liberation Mono", monospace;
+  font-size: 1rem;
+  font-weight: 400;
+  letter-spacing: normal;
+}
+
+.recording-list {
+  display: grid;
+  gap: 1.2rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.recording h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: normal;
+}
+
+.recording-notes {
+  margin: 0.35rem 0 0.8rem;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.recording audio {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: 40px;
+  margin-top: 0.5rem;
+}
+
+.recording audio:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
 .prose {
   max-width: 46rem;
 }

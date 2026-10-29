@@ -6,10 +6,11 @@ ROOT = Path(__file__).parent
 
 AUTHOR = "Lorenzo Tumini"
 SITENAME = "Lorenzo Tumini"
-SITESUBTITLE = "Projects and technical notes"
+SITESUBTITLE = "Projects, technical notes, and music"
 SITEURL = ""
 
 PATH = "content"
+STATIC_PATHS = ["images", "audio"]
 OUTPUT_PATH = "output/"
 DELETE_OUTPUT_DIRECTORY = True
 THEME = str(ROOT / "theme")
@@ -22,14 +23,15 @@ ARTICLE_PATHS = ["articles"]
 ARTICLE_URL = "articles/{slug}/"
 ARTICLE_SAVE_AS = "articles/{slug}/index.html"
 
-# Pages are parsed so the home template can use home.md, but they are not
+# Pages supply introductions to the home and music templates, but they are not
 # emitted as separate files.
 PAGE_PATHS = ["pages"]
 PAGE_URL = ""
 PAGE_SAVE_AS = ""
 
-DIRECT_TEMPLATES = ["index", "archives"]
+DIRECT_TEMPLATES = ["index", "archives", "music"]
 ARCHIVES_SAVE_AS = "articles/index.html"
+MUSIC_SAVE_AS = "music/index.html"
 AUTHORS_SAVE_AS = ""
 CATEGORIES_SAVE_AS = ""
 TAGS_SAVE_AS = ""
@@ -63,3 +65,6 @@ MARKDOWN = {
 
 with (ROOT / "data" / "projects.toml").open("rb") as project_file:
     PROJECTS = tomllib.load(project_file)["projects"]
+
+with (ROOT / "data" / "music.toml").open("rb") as music_file:
+    RECORDINGS = tomllib.load(music_file)["recordings"]

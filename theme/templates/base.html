@@ -21,6 +21,7 @@
         <nav aria-label="Main navigation">
           <a href="{{ SITEURL }}/">Home</a>
           <a href="{{ SITEURL }}/articles/">Articles</a>
+          <a href="{{ SITEURL }}/music/"{% if output_file == MUSIC_SAVE_AS %} aria-current="page"{% endif %}>Music</a>
         </nav>
       </div>
     </header>

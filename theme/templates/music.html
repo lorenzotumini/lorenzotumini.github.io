@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Music — {{ SITENAME }}{% endblock %}
+{% block description %}Drum recordings by Lorenzo Tumini.{% endblock %}
+
+{% block content %}
+  <header class="page-heading music-heading">
+    <h1>Music</h1>
+    {% for page in pages %}
+      {% if page.slug == "music" %}
+        {{ page.content }}
+      {% endif %}
+    {% endfor %}
+  </header>
+
+  <!-- {% if RECORDINGS | selectattr("placeholder") | list %} -->
+  <!--   <p class="music-preview-note">Design preview · Placeholder recordings and years.</p> -->
+  <!-- {% endif %} -->
+
+  {% for year in RECORDINGS | groupby("year") | reverse %}
+    <section class="music-year" aria-labelledby="year-{{ year.grouper }}">
+      <h2 id="year-{{ year.grouper }}">{{ year.grouper }}</h2>
+      <ol class="recording-list" aria-label="Recordings from {{ year.grouper }}">
+        {% for recording in year.list %}
+          <li>
+            <article class="recording" aria-labelledby="recording-{{ year.grouper }}-{{ loop.index }}">
+              <h3 id="recording-{{ year.grouper }}-{{ loop.index }}">{{ recording.title | e }}</h3>
+              {% if recording.notes %}
+                <p class="recording-notes">{{ recording.notes | e }}</p>
+              {% endif %}
+              <audio controls preload="none" aria-label="{% if recording.placeholder %}Placeholder: {% else %}Listen to {% endif %}{{ recording.title | e }}">
+                {% if recording.audio %}
+                  <source src="{{ SITEURL }}/{{ recording.audio | e }}">
+                  <a href="{{ SITEURL }}/{{ recording.audio | e }}">Listen to {{ recording.title | e }}</a>
+                {% endif %}
+              </audio>
+            </article>
+          </li>
+        {% endfor %}
+      </ol>
+    </section>
+  {% endfor %}
+{% endblock %}

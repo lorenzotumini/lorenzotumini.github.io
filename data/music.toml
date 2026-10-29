@@ -1,0 +1,19 @@
+# Draft entries for reviewing the layout. Replace these with real recordings.
+# For each recording, add a year and an audio path relative to
+# content/, e.g. audio = "audio/session.mp3". Put the file in content/audio/.
+# Remove placeholder = true when the entry is ready.
+
+[[recordings]]
+title = "Recording 01"
+year = 2026
+placeholder = true
+
+[[recordings]]
+title = "Recording 02"
+year = 2026
+placeholder = true
+
+[[recordings]]
+title = "Recording 03"
+year = 2025
+placeholder = true
