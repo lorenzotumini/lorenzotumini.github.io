@@ -5,6 +5,12 @@ tech = "C · Go"
 description = "A functional concatenative language with a stack-based runtime, reference-counted objects, an iterative VM, packages, C interop, and editor tooling."
 
 [[projects]]
+name = "Portrait Studio"
+url = "https://github.com/lorenzotumini/portrait_studio"
+tech = "Python · ComfyUI"
+description = "A local portrait-processing workflow with foreground matting, green-screen cleanup, color correction, and background compositing, plus a Python batch tool for concurrent processing across multiple GPUs."
+
+[[projects]]
 name = "Programma 101"
 url = "https://github.com/lorenzotumini/p101"
 tech = "C"
@@ -14,7 +20,7 @@ description = "An emulator for Olivetti's Programma 101, including its register 
 name = "Graphe"
 url = "https://github.com/lorenzotumini/graphe"
 tech = "C · raylib"
-description = "An interactive visualizer for DFS, BFS, and tree traversals with step-by-step playback, edge classification and graph layouts."
+description = "An interactive visualizer for DFS, BFS, Dijkstra, and tree traversals with step-by-step playback, edge classification and graph layouts."
 
 [[projects]]
 name = "liblor"
