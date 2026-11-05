@@ -1,20 +1,69 @@
 <!doctype html>
-<html lang="{{ DEFAULT_LANG }}">
+<html lang="{{ DEFAULT_LANG }}"{% if DESIGN_PREVIEWS %} data-look="index" data-theme="light"{% endif %}>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{% block description %}{{ SITESUBTITLE }}{% endblock %}">
     <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
     <script>
+      {% if DESIGN_PREVIEWS %}
+      {
+        const params = new URLSearchParams(location.search);
+        const look = ["current", "index", "warm", "signal"].includes(params.get("look")) ? params.get("look") : "index";
+        document.documentElement.dataset.look = look;
+        document.documentElement.dataset.theme = ["light", "dark"].includes(params.get("mode")) ? params.get("mode") : (["signal", "current"].includes(look) ? "dark" : "light");
+      }
+      {% else %}
       try {
         if (localStorage.getItem("theme") === "light") {
           document.documentElement.dataset.theme = "light";
         }
       } catch (_) {}
+      {% endif %}
     </script>
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css{% if ASSET_VERSION %}?v={{ ASSET_VERSION }}{% endif %}">
+    {% if DESIGN_PREVIEWS %}
+      <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/studies.css">
+    {% endif %}
   </head>
   <body>
+    {% if DESIGN_PREVIEWS %}
+      <aside class="study-toolbar" aria-label="Design studies">
+        <span class="study-toolbar-label">Design study</span>
+        <nav aria-label="Choose a design">
+          <a href="?look=current" data-look-choice="current">Current</a>
+          <a href="?look=index" data-look-choice="index">01 Index</a>
+          <a href="?look=warm" data-look-choice="warm">02 Warm</a>
+          <a href="?look=signal" data-look-choice="signal">03 Signal</a>
+        </nav>
+        <button class="study-mode" type="button" aria-label="Switch to dark mode">Dark mode</button>
+      </aside>
+      {% if article is defined %}
+        {% set location_label = "Articles" %}
+      {% elif output_file == MUSIC_SAVE_AS %}
+        {% set location_label = "Music" %}
+      {% elif output_file == ARCHIVES_SAVE_AS %}
+        {% set location_label = "Articles" %}
+      {% else %}
+        {% set location_label = "Home" %}
+      {% endif %}
+      <header class="study-header wrap">
+        <details class="location-menu">
+          <summary>
+            <span class="location-name">lt</span>
+            <span class="location-slash" aria-hidden="true">/</span>
+            <span>{{ location_label }}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="m3 4.5 3 3 3-3" stroke="currentColor" stroke-width="1.4"/></svg>
+          </summary>
+          <nav aria-label="Site navigation">
+            <a href="{{ SITEURL }}/"{% if location_label == "Home" %} aria-current="page"{% endif %}>Home</a>
+            <a href="{{ SITEURL }}/articles/"{% if location_label == "Articles" %} aria-current="{% if article is defined %}true{% else %}page{% endif %}"{% endif %}>Articles</a>
+            <a href="{{ SITEURL }}/music/"{% if location_label == "Music" %} aria-current="page"{% endif %}>Music</a>
+          </nav>
+        </details>
+        {% if article is defined %}<span class="location-detail">{{ article.title }}</span>{% endif %}
+      </header>
+    {% endif %}
     <header class="masthead">
       <div class="wrap masthead-inner">
         <a class="site-name" href="{{ SITEURL }}/">{{ SITENAME }}</a>
@@ -33,9 +82,9 @@
     <footer class="site-footer">
       <div class="wrap footer-inner">
         <small>© 2026 Lorenzo Tumini</small>
-        <button class="theme-toggle" type="button" aria-label="Switch to light mode" hidden>
+        {% if not DESIGN_PREVIEWS %}<button class="theme-toggle" type="button" aria-label="Switch to light mode" hidden>
           <span aria-hidden="true">☼</span>
-        </button>
+        </button>{% endif %}
       </div>
     </footer>
 
@@ -43,7 +92,11 @@
       <div class="page-scrollbar-thumb"></div>
     </div>
 
-    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/theme.js{% if ASSET_VERSION %}?v={{ ASSET_VERSION }}{% endif %}" defer></script>
+    {% if DESIGN_PREVIEWS %}
+      <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/studies.js" defer></script>
+    {% else %}
+      <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/theme.js{% if ASSET_VERSION %}?v={{ ASSET_VERSION }}{% endif %}" defer></script>
+    {% endif %}
     <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/scrollbar.js{% if ASSET_VERSION %}?v={{ ASSET_VERSION }}{% endif %}" defer></script>
   </body>
 </html>

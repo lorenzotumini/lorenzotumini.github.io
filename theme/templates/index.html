@@ -2,6 +2,27 @@
 
 {% block content %}
   <h1 class="visually-hidden">{{ SITENAME }}</h1>
+  {% if DESIGN_PREVIEWS %}
+    <header class="study-introduction">
+      <p class="study-eyebrow">Computer engineering · Drums · Experiments</p>
+      <div class="rhythm" aria-labelledby="rhythm-title" hidden>
+        <div class="rhythm-heading">
+          <span id="rhythm-title">A little rhythm</span>
+          <span>96 BPM</span>
+        </div>
+        <div class="rhythm-steps" role="group" aria-label="Sixteen-step rhythm">
+          {% for step in range(16) %}
+            <button type="button" class="rhythm-step" data-step="{{ step }}" aria-pressed="{{ 'true' if step in [0, 3, 6, 8, 10, 14] else 'false' }}" aria-label="Step {{ step + 1 }}{% if step % 4 == 0 %}, kick{% else %}, click{% endif %}"><span aria-hidden="true">{{ '%02d' | format(step + 1) }}</span></button>
+          {% endfor %}
+        </div>
+        <div class="rhythm-controls">
+          <button type="button" class="rhythm-play" aria-pressed="false">Play rhythm <span aria-hidden="true">↗</span></button>
+          <span class="rhythm-hint">Tap the squares to change it.</span>
+        </div>
+        <p class="rhythm-status visually-hidden" role="status"></p>
+      </div>
+    </header>
+  {% endif %}
 
   {% for page in pages %}
     {% if page.slug == "home" %}
@@ -11,7 +32,7 @@
     {% endif %}
   {% endfor %}
 
-  <section>
+  <section id="projects">
     <h2>Projects</h2>
     <div class="projects">
       {% for project in PROJECTS %}
@@ -26,16 +47,4 @@
     </div>
   </section>
 
-  {% if articles %}
-    <section>
-      <h2>Latest</h2>
-      <ol class="article-list">
-        {% for article in articles %}
-          <li>
-            <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
-          </li>
-        {% endfor %}
-      </ol>
-    </section>
-  {% endif %}
 {% endblock %}

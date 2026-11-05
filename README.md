@@ -31,6 +31,9 @@ python -m pelican content -s pelicanconf.py
 
 The generated files are written to `output/`. Do not edit them directly.
 
+For the three design studies, build with `python -m pelican content -s previewconf.py`
+and open `/designs/` in the local preview.
+
 Reusable HTML lives in `theme/templates/`; the complete visual design is in
 `theme/static/css/style.css`.
 
